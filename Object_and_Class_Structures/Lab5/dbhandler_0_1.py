@@ -77,7 +77,7 @@ if __name__ == '__main__':
     argparser.add_argument('-i', '--initialize', default=False, required=False)
     args = argparser.parse_args()
     if bool(args.initialize):        
-        scriptfile = os.getcwd()+ r'C:\Users\micha\Desktop\OOP\Lab 5\dicesDB.sql'
+        scriptfile = os.getcwd()+ r'C:\Users\micha\Desktop\OOP\Object_and_Class_Structures\Lab5_SQL\dicesDB.sql'
         ConnectionHandler(path).executeScript(scriptfile)
         print(f'database {path} initialized')
     main(path)
