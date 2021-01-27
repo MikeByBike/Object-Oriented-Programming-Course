@@ -42,8 +42,8 @@ class ConnectionHandler:
             cursor.close()      
         return result
        
-    def executeScript(self, scriptfile):
-        with open(scriptfile, 'r') as sql_file:
+    def executeScript(self, dicesDB):
+        with open("dicesDB.sql", 'r') as sql_file:
             sql_script = sql_file.read()
         self.openConnection()
         try:
@@ -61,13 +61,15 @@ class ConnectionHandler:
 def main(path):
     '''funcion to execute the progam, path db name and path to it'''
     c = ConnectionHandler('dicesDB.sqlite')
+    c.executeScript('dicesDB.sql')
     c.openConnection()
+    
     if c.connection:
         print('connection is open')
-        
-        query_1 = 'SELECT * FROM rounds'
+        query_1 = 'SELECT * FROM rounds, plays'
         rounds = c.getData(query_1)
-        print(list(rounds))
+        for row in rounds:
+            print(row)
         c.closeConnection()
 
 if __name__ == '__main__':
@@ -77,7 +79,7 @@ if __name__ == '__main__':
     argparser.add_argument('-i', '--initialize', default=False, required=False)
     args = argparser.parse_args()
     if bool(args.initialize):        
-        scriptfile = os.getcwd()+ r'C:\Users\micha\Desktop\OOP\Object_and_Class_Structures\Lab5_SQL\dicesDB.sql'
+        scriptfile = os.getcwd()+ r'C:\Users\micha\Desktop\OOP\Object_and_Class_Structures\Lab5\dicesDB.sql'
         ConnectionHandler(path).executeScript(scriptfile)
         print(f'database {path} initialized')
     main(path)
