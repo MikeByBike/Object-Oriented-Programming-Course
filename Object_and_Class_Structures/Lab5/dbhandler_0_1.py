@@ -68,7 +68,7 @@ def main(path):
         query_1 = 'SELECT * FROM rounds'
         rounds = c.getData(query_1)
         print(list(rounds))
-        c.connection.close()
+        c.closeConnection()
 
 if __name__ == '__main__':
     path = 'dicesDB.sqlite' 
