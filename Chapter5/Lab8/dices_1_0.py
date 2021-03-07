@@ -1,5 +1,5 @@
 """
-File:           dices_0_2.py
+File:           dices_1_0.py
 Authors:        Louis Lautz, Ayush Pradhan, Michalis Iona, Bogdan Neacsa
 Description:    A better version of the dice game from lab 6. This version uses
                 the tkinter module to make the program more visually appealing.
